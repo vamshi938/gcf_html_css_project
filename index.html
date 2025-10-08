@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dakshin — Explore South India</title>
+  <meta name="description" content="Explore the rich geography, history, culture, and nature of South India. Discover misty hills, ancient temples, vibrant traditions, and diverse wildlife." />
+  <link rel="icon" href="https://placehold.co/32x32/f97316/ffffff?text=D" sizes="any">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --heading: 'Playfair Display', serif;
+      --body: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html { 
+      scroll-behavior: smooth; 
+    }
+    body { 
+      font-family: var(--body); 
+      color: #333333; 
+      background: #ffffff; 
+    }
+    h1, h2, h3 { 
+      font-family: var(--heading); 
+      color: #1f2937; 
+    }
+    .caption { 
+      font-size: .9rem; 
+      color: #6b7280; 
+      margin-top: .5rem; 
+    }
+    /* Lightbox styles */
+    .lightbox-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 60;
+      padding: 1rem;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .lightbox-backdrop.visible {
+        opacity: 1;
+    }
+    .lightbox-img {
+      max-width: 95%;
+      max-height: 90%;
+      border-radius: 0.5rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      transform: scale(0.95);
+      transition: transform 0.3s ease-in-out;
+      cursor: default;
+    }
+    .lightbox-backdrop.visible .lightbox-img {
+        transform: scale(1);
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Header Section -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-white/60 border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="#home" class="text-2xl text-gray-800 font-bold tracking-tight">Dakshin</a>
+      <nav class="hidden md:flex gap-6 items-center">
+        <a href="#geography" class="hover:text-amber-700 transition">Geography</a>
+        <a href="#history" class="hover:text-amber-700 transition">History</a>
+        <a href="#culture" class="hover:text-amber-700 transition">Culture</a>
+        <a href="#nature" class="hover:text-amber-700 transition">Nature</a>
+      </nav>
+      <!-- Mobile Menu using Details/Summary for no-JS functionality -->
+      <div class="md:hidden">
+        <details class="relative">
+          <summary class="cursor-pointer list-none px-2 py-1 rounded-md bg-gray-100 hover:bg-gray-200">Menu</summary>
+          <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border z-10">
+            <a href="#geography" class="block px-4 py-2 text-sm hover:bg-gray-50">Geography</a>
+            <a href="#history" class="block px-4 py-2 text-sm hover:bg-gray-50">History</a>
+            <a href="#culture" class="block px-4 py-2 text-sm hover:bg-gray-50">Culture</a>
+            <a href="#nature" class="block px-4 py-2 text-sm hover:bg-gray-50">Nature</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative h-[70vh] md:h-[78vh]">
+    <div class="absolute inset-0">
+      <img src="images/firstImage.jpg" alt="Houseboat on the serene Kerala backwaters" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/40"></div>
+    </div>
+    <div class="relative z-10 max-w-6xl mx-auto px-6 h-full flex items-center">
+      <div class="text-white max-w-2xl">
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight drop-shadow-sm">The Soul of India</h1>
+        <p class="mt-4 text-lg md:text-xl text-gray-200">Discover the poetry of misty hills, the rhythm of coastal tides, and the stories etched in stone across South India.</p>
+        <div class="mt-6 flex gap-3">
+          <a href="#geography" class="inline-block px-5 py-3 bg-amber-600 hover:bg-amber-700 rounded-md font-semibold shadow transition-colors">Explore Geography</a>
+          <a href="#history" class="inline-block px-5 py-3 bg-white/20 hover:bg-white/30 rounded-md border border-white text-white transition-colors">Historical Places</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-6xl mx-auto px-6 py-16 space-y-24">
+
+    <!-- Geography Section -->
+    <section id="geography">
+      <h2 class="text-3xl font-semibold mb-6">Geography</h2>
+      <p class="text-gray-600 mb-6 max-w-3xl">South India is a tapestry of landscapes — from the Western Ghats and tranquil backwaters to long sandy coasts and rocky plateaus.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <figure class="rounded-lg overflow-hidden bg-white shadow hover:shadow-xl transition">
+          <img src="images/secondImage.jpg" alt="Misty tea plantations in the Western Ghats" class="w-full h-56 object-cover">
+          <figcaption class="p-4">
+            <div class="font-semibold">Misty Hills</div>
+            <div class="caption">Western Ghats — tea estates and undulating ridges.</div>
+          </figcaption>
+        </figure>
+        <figure class="rounded-lg overflow-hidden bg-white shadow hover:shadow-xl transition">
+          <img src="images/seventhImage.jpg" alt="Rocky coastline with palm trees in South India" class="w-full h-56 object-cover">
+          <figcaption class="p-4">
+            <div class="font-semibold">Coastline</div>
+            <div class="caption">Beaches along the Arabian Sea & Bay of Bengal.</div>
+          </figcaption>
+        </figure>
+        <figure class="rounded-lg overflow-hidden bg-white shadow hover:shadow-xl transition">
+          <img src="images/fifthteenImage.jpg" alt="A beautiful church on the banks of the Kerala backwaters" class="w-full h-56 object-cover">
+          <figcaption class="p-4">
+            <div class="font-semibold">Backwaters</div>
+            <div class="caption">Historic churches and serene life along the waterways.</div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="history">
+      <h2 class="text-3xl font-semibold mb-6">Historical Places</h2>
+      <p class="text-gray-600 mb-6 max-w-3xl">South India’s heritage is woven in temples, forts, and ancient ruins — each a living narrative in stone.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <article class="bg-white rounded-lg overflow-hidden shadow group hover:shadow-2xl transition transform hover:-translate-y-1">
+          <img src="images/thirdImage.jpg" alt="The Lotus Mahal in Hampi" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold">Hampi</h3>
+            <p class="text-sm text-gray-600 mt-2">Explore the stunning ruins of the Vijayanagara empire, including the elegant Lotus Mahal.</p>
+            <p class="caption mt-3">Karnataka</p>
+          </div>
+        </article>
+        <article class="bg-white rounded-lg overflow-hidden shadow group hover:shadow-2xl transition transform hover:-translate-y-1">
+          <img src="images/fifthImage.jpg" alt="The colorful gopurams of Sri Ranganathaswamy Temple" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold">Srirangam</h3>
+            <p class="text-sm text-gray-600 mt-2">Witness the vibrant and intricate architecture of one of the world's largest functioning temples.</p>
+            <p class="caption mt-3">Tamil Nadu</p>
+          </div>
+        </article>
+        <article class="bg-white rounded-lg overflow-hidden shadow group hover:shadow-2xl transition transform hover:-translate-y-1">
+          <img src="images/fourthImage.jpg" alt="The grand Brihadeeswarar Temple in Thanjavur" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold">Thanjavur</h3>
+            <p class="text-sm text-gray-600 mt-2">Home to the magnificent Brihadeeswarar Temple, a UNESCO World Heritage Site.</p>
+            <p class="caption mt-3">Tamil Nadu</p>
+          </div>
+        </article>
+        <article class="bg-white rounded-lg overflow-hidden shadow group hover:shadow-2xl transition transform hover:-translate-y-1">
+          <img src="images/eleventhImage.jpg" alt="The iconic Charminar monument in Hyderabad" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold">Hyderabad</h3>
+            <p class="text-sm text-gray-600 mt-2">Discover landmarks like the Charminar, a symbol of the city's rich history and culture.</p>
+            <p class="caption mt-3">Telangana</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section id="culture">
+      <h2 class="text-3xl font-semibold mb-6">Culture</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div class="lg:col-span-2 space-y-4">
+          <h3 class="text-2xl font-medium">Tradition, Arts & Festivals</h3>
+          <p class="text-gray-600">South India preserves a deep artistic heritage: classical dance forms like Bharatanatyam and Kathakali, Carnatic music with ancient ragas, and temple arts that merge sculpture and ritual. Festivals such as Onam, Pongal, Ugadi, and Sankranti are celebrated with fervor and feasts.</p>
+          <h3 class="text-xl font-medium mt-4">Cuisine</h3>
+          <p class="text-gray-600">Food in South India is a symphony of rice, coconut, spices, tamarind, and seasonal produce: dosas, idlis, sambar, Chettinad curries, Kerala fish specialties. Meals are often served on banana leaves during festivals and ceremonies.</p>
+          <h3 class="text-xl font-medium mt-4">Craft, Daily Life & Markets</h3>
+          <p class="text-gray-600">From the vivid silks of Kanchipuram or Mysore to hand-woven baskets, bronze lamps, temple carvings, and local markets — craft is woven into daily life. Temples, festivals, and village fairs all pulse with this living cultural fabric.</p>
+        </div>
+        <aside class="space-y-4">
+          <figure class="rounded-lg overflow-hidden shadow">
+            <img src="images/ninethImage.jpg" alt="Kathakali performer with traditional makeup and costume" class="w-full h-44 object-cover">
+            <figcaption class="p-3">
+              <div class="font-semibold">Classical Arts</div>
+              <div class="caption">Kathakali, Bharatanatyam & temple performances.</div>
+            </figcaption>
+          </figure>
+          <figure class="rounded-lg overflow-hidden shadow">
+            <img src="images/food.png" alt="A delicious South Indian dosa served on a banana leaf" class="w-full h-44 object-cover">
+            <figcaption class="p-3">
+              <div class="font-semibold">Cuisine</div>
+              <div class="caption">Dosa, sambar, idli & festival meals.</div>
+            </figcaption>
+          </figure>
+           <figure class="rounded-lg overflow-hidden shadow">
+            <img src="images/tenthImage.jpg" alt="A traditional Kambala buffalo race in action" class="w-full h-44 object-cover">
+            <figcaption class="p-3">
+              <div class="font-semibold">Festivals & Traditions</div>
+              <div class="caption">Vibrant events like the Kambala buffalo race.</div>
+            </figcaption>
+          </figure>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Nature & Scenery Section -->
+    <section id="nature">
+      <h2 class="text-3xl font-semibold mb-6">Landmarks & Scenery</h2>
+      <p class="text-gray-600 mb-6 max-w-3xl">The southern landscapes are dotted with incredible landmarks and natural beauty. From architectural marvels to lush green vistas, there is always something to discover. Click any image below to enlarge.</p>
+      <div id="gallery" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <a href="images/sixthImage.jpg" data-src="images/sixthImage.jpg" class="group overflow-hidden rounded-lg block cursor-pointer" aria-label="View larger image of a train winding through tea gardens">
+          <img src="images/sixthImage.jpg" alt="A train winding through tea gardens" class="w-full h-40 object-cover group-hover:scale-105 transition-transform">
+        </a>
+        <a href="images/twelevthImage.jpg" data-src="images/twelevthImage.jpg" class="group overflow-hidden rounded-lg block cursor-pointer" aria-label="View larger image of the illuminated Tirumala temple at night">
+          <img src="images/twelevthImage.jpg" alt="The illuminated Tirumala temple at night" class="w-full h-40 object-cover group-hover:scale-105 transition-transform">
+        </a>
+        <a href="images/thirdteenthImage.jpg" data-src="images/thirdteenthImage.jpg" class="group overflow-hidden rounded-lg block cursor-pointer" aria-label="View larger image of the Golden Temple in Vellore">
+          <img src="images/thirdteenthImage.jpg" alt="The Golden Temple in Vellore" class="w-full h-40 object-cover group-hover:scale-105 transition-transform">
+        </a>
+        <a href="images/fourthteenimage.webp" data-src="images/fourthteenimage.webp" class="group overflow-hidden rounded-lg block cursor-pointer" aria-label="View larger image of the Matrimandir in Auroville">
+          <img src="images/fourthteenimage.webp" alt="The Matrimandir in Auroville" class="w-full h-40 object-cover group-hover:scale-105 transition-transform">
+        </a>
+        <a href="images/sixthteenImage.webp" data-src="images/sixthteenImage.webp" class="group overflow-hidden rounded-lg block cursor-pointer" aria-label="View larger image of the Padmanabhaswamy Temple at sunset">
+          <img src="images/sixthteenImage.webp" alt="The Padmanabhaswamy Temple at sunset" class="w-full h-40 object-cover group-hover:scale-105 transition-transform">
+        </a>
+        <a href="images/elephant.jpeg" data-src="images/elephant.jpeg" class="group overflow-hidden rounded-lg block cursor-pointer" aria-label="View larger image of an elephant in a lush green forest">
+            <img src="images/elephant.jpeg" alt="An elephant in a lush green forest" class="w-full h-40 object-cover group-hover:scale-105 transition-transform">
+        </a>
+        <a href="images/tiger.jpeg" data-src="images/tiger.jpeg" class="group overflow-hidden rounded-lg block cursor-pointer" aria-label="View larger image of a majestic tiger in the water">
+            <img src="images/tiger.jpeg" alt="A majestic tiger in the water" class="w-full h-40 object-cover group-hover:scale-105 transition-transform">
+        </a>
+        <a href="images/waterfall.jpg" data-src="images/waterfall.jpg" class="group overflow-hidden rounded-lg block cursor-pointer" aria-label="View larger image of powerful waterfalls cascading down cliffs">
+            <img src="images/waterfall.jpg" alt="Powerful waterfalls cascading down cliffs" class="w-full h-40 object-cover group-hover:scale-105 transition-transform">
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-gray-50 border-t mt-12">
+    <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <h4 class="text-lg font-semibold">Ready to explore?</h4>
+        <p class="text-gray-600">Plan your journey, one story at a time. Let Dakshin guide you.</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#home" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-md transition-colors">Start Exploring</a>
+        <span class="text-sm text-gray-500">© <span id="year"></span> Dakshin. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox container -->
+  <div id="lightbox-root"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set the current year in the footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Lightbox functionality
+      const gallery = document.getElementById('gallery');
+      const root = document.getElementById('lightbox-root');
+      let currentLightbox = null;
+
+      function openLightbox(src, alt = '') {
+        // Create lightbox elements
+        const backdrop = document.createElement('div');
+        backdrop.className = 'lightbox-backdrop';
+        backdrop.tabIndex = -1; // Make it focusable
+
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = alt;
+        img.className = 'lightbox-img';
+        
+        backdrop.appendChild(img);
+        root.appendChild(backdrop);
+        
+        // Add a small delay for the transition to trigger
+        setTimeout(() => {
+            backdrop.classList.add('visible');
+        }, 10);
+
+        // Function to close the lightbox
+        const close = () => {
+            backdrop.classList.remove('visible');
+            backdrop.addEventListener('transitionend', () => {
+                if (root.contains(backdrop)) {
+                    root.removeChild(backdrop);
+                }
+            }, { once: true });
+
+            document.removeEventListener('keydown', onKey);
+            currentLightbox = null;
+        };
+        
+        // Event listeners for closing
+        backdrop.addEventListener('click', (e) => {
+          if (e.target === backdrop) {
+            close();
+          }
+        });
+
+        const onKey = (e) => {
+          if (e.key === 'Escape') {
+            close();
+          }
+        };
+
+        document.addEventListener('keydown', onKey);
+        backdrop.focus();
+        currentLightbox = { close };
+      }
+      
+      // Attach click listeners to gallery links
+      if (gallery) {
+        gallery.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const src = link.getAttribute('data-src'); // Use data-src for the lightbox
+            const alt = link.querySelector('img')?.alt || '';
+            openLightbox(src, alt);
+          });
+        });
+      }
+      
+      // Close mobile menu on navigation
+      document.querySelectorAll('details a').forEach(link => {
+        link.addEventListener('click', () => {
+          const details = link.closest('details');
+          if (details) {
+            details.removeAttribute('open');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
+
